@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Redirecting...</title>
+  <script>
+    // Chuyển hướng đường dẫn /art/1 về index.html để SPA xử lý mà vẫn giữ URL sạch
+    (function () {
+      var l = window.location;
+      // Nếu bạn dùng GitHub Pages dạng username.github.io/ten-repo/ thì đổi pathSegmentsToKeep = 1
+      // Nếu dùng custom domain (tenmien.com) hoặc username.github.io thì giữ = 0
+      var pathSegmentsToKeep = 0;
+
+      var base = l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/');
+      var fullRoute = l.pathname + (l.search ? l.search : '');
+      var encoded = encodeURIComponent(fullRoute.replace(/&/g, '~and~'));
+
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        base + '/?p=' + encoded + l.hash
+      );
+    })();
+  </script>
+</head>
+<body></body>
+</html>

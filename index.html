@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Ký Ức Phố Cổ — Hanoi Old Quarter Digital Art Gallery</title>
+  <meta name="description" content="Curated fine art photography & prints from Hanoi Old Quarter." />
+
+  <!-- Fonts hỗ trợ đẹp cho Tiếng Anh, Tiếng Việt, Tiếng Pháp, Tiếng Hàn, Tiếng Nhật -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Serif+JP:wght@500;600&family=Noto+Serif+KR:wght@500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="/style.css" id="main-stylesheet" />
+  <script>
+    // Xử lý tự động đường dẫn tương đối nếu mở trực tiếp file:// hoặc subpath GitHub Pages
+    (function () {
+      var l = window.location;
+      if (l.protocol === 'file:') {
+        document.getElementById('main-stylesheet').href = 'style.css';
+      }
+      // Khôi phục URL từ 404.html (GitHub Pages SPA redirect)
+      if (l.search && l.search.indexOf('?p=') === 0) {
+        var decoded = decodeURIComponent(l.search.slice(3)).replace(/~and~/g, '&');
+        window.history.replaceState(null, '', decoded + l.hash);
+      }
+    })();
+  </script>
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Thanh điều hướng cố định trên cùng -->
+    <header class="top-bar">
+      <div class="top-bar-inner">
+        <div id="nav-left" class="nav-left">
+          <!-- Render động: Logo ở trang chủ hoặc nút Quay lại ở trang chi tiết -->
+        </div>
+
+        <!-- Bộ chuyển đổi 5 ngôn ngữ cố định góc trên phải -->
+        <nav class="lang-switcher" aria-label="Language switcher">
+          <button type="button" class="lang-btn active" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="vi">VI</button>
+          <button type="button" class="lang-btn" data-lang="ko">KO</button>
+          <button type="button" class="lang-btn" data-lang="ja">JA</button>
+          <button type="button" class="lang-btn" data-lang="fr">FR</button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Nội dung chính (Trang chủ hoặc Trang chi tiết) -->
+    <main id="app-main" class="app-main" aria-live="polite"></main>
+
+    <!-- Lightbox phóng to ảnh khi chạm vào bức ảnh chi tiết -->
+    <div id="lightbox" class="lightbox" hidden aria-modal="true" role="dialog">
+      <button type="button" id="lightbox-close" class="lightbox-close" aria-label="Close">×</button>
+      <img id="lightbox-img" src="" alt="" />
+      <p id="lightbox-caption" class="lightbox-caption"></p>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

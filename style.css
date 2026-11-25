@@ -1,0 +1,630 @@
+:root {
+  --bg-cream: #FAF8F5;
+  --bg-surface: #FFFFFF;
+  --bg-mat: #F2EFE9;
+  --text-primary: #1B1A18;
+  --text-secondary: #5C5954;
+  --text-muted: #8C877E;
+  --border-light: #E6E1D8;
+  --border-dark: #2C2A27;
+  --accent-gold: #8A724C;
+  --whatsapp-bg: #1B1A18;
+  --whatsapp-hover: #33312D;
+
+  --font-serif: 'Cormorant Garamond', 'Noto Serif KR', 'Noto Serif JP', Georgia, serif;
+  --font-sans: 'Inter', 'Noto Sans KR', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --max-width: 520px;
+  --top-bar-height: 56px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  background-color: #EFECE6;
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #EFECE6;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+}
+
+/* Khung ứng dụng chuẩn Mobile, hiển thị như thiết bị di động sang trọng trên Desktop */
+.app-shell {
+  width: 100%;
+  max-width: var(--max-width);
+  min-height: 100dvh;
+  background-color: var(--bg-cream);
+  position: relative;
+  box-shadow: 0 0 40px rgba(27, 26, 24, 0.06);
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- TOP BAR CỐ ĐỊNH --- */
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: var(--max-width);
+  height: var(--top-bar-height);
+  background: rgba(250, 248, 245, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-light);
+  z-index: 100;
+}
+
+.top-bar-inner {
+  height: 100%;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.brand-mark {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 6px 8px 6px 0;
+}
+
+.back-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Bộ chuyển đổi ngôn ngữ */
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: var(--bg-mat);
+  padding: 3px;
+  border-radius: 999px;
+  border: 1px solid var(--border-light);
+  flex-shrink: 0;
+}
+
+.lang-btn {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 4px 7px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lang-btn.active {
+  background-color: var(--text-primary);
+  color: var(--bg-cream);
+}
+
+/* --- MAIN CONTENT --- */
+.app-main {
+  padding-top: var(--top-bar-height);
+  flex: 1;
+}
+
+/* --- TRANG CHỦ (HOME GRID) --- */
+.gallery-hero {
+  padding: 28px 20px 22px;
+  text-align: center;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.hero-eyebrow {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  margin-bottom: 8px;
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.hero-subtitle {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+.grid-section {
+  padding: 22px 16px 36px;
+}
+
+.grid-meta-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.art-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 14px;
+}
+
+.art-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 0;
+}
+
+.art-card-frame {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background-color: var(--bg-mat);
+  padding: 10px;
+  border: 1px solid var(--border-light);
+  margin-bottom: 10px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.art-card:active .art-card-frame,
+.art-card:hover .art-card-frame {
+  border-color: var(--text-secondary);
+}
+
+.art-card-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.art-card-num {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(250, 248, 245, 0.88);
+  padding: 2px 6px;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+}
+
+.art-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--text-primary);
+  margin-bottom: 3px;
+}
+
+.art-card-location {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.art-card-price {
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.gallery-footer {
+  padding: 28px 20px 36px;
+  border-top: 1px solid var(--border-light);
+  text-align: center;
+  background-color: var(--bg-mat);
+}
+
+.footer-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.footer-text {
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* --- TRANG CHI TIẾT TÁC PHẨM (/art/:id) --- */
+.detail-view {
+  padding-bottom: 104px; /* Chừa khoảng trống cho nút CTA nổi phía dưới */
+}
+
+.detail-artwork-stage {
+  background-color: var(--bg-mat);
+  padding: 22px 20px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.detail-frame {
+  background: var(--bg-surface);
+  padding: 12px;
+  box-shadow: 0 12px 30px rgba(27, 26, 24, 0.08);
+  border: 1px solid var(--border-light);
+  position: relative;
+  cursor: zoom-in;
+}
+
+.detail-frame img {
+  width: 100%;
+  height: auto;
+  max-height: 62vh;
+  object-fit: cover;
+  display: block;
+}
+
+.zoom-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 10px;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.detail-body {
+  padding: 24px 20px 12px;
+}
+
+.detail-catalog {
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  margin-bottom: 8px;
+}
+
+.detail-title {
+  font-family: var(--font-serif);
+  font-size: 1.85rem;
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.detail-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.detail-divider {
+  height: 1px;
+  background-color: var(--border-light);
+  margin: 20px 0;
+}
+
+.section-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.detail-story {
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: var(--text-primary);
+  white-space: pre-line;
+}
+
+/* Bảng chọn phiên bản & kích thước */
+.edition-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.option-card {
+  width: 100%;
+  text-align: left;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  padding: 14px 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.option-card.selected {
+  border-color: var(--text-primary);
+  background-color: #FFFDF9;
+  box-shadow: inset 0 0 0 1px var(--text-primary);
+}
+
+.option-info-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.option-badge {
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 2px 6px;
+  background: var(--bg-mat);
+  color: var(--accent-gold);
+  border-radius: 3px;
+}
+
+.option-info-desc {
+  font-size: 0.76rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+
+.option-price-col {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.price-usd {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.price-vnd {
+  font-size: 0.73rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+  white-space: nowrap;
+}
+
+/* Chọn kích thước */
+.size-pills {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.size-btn {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  padding: 10px 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.size-btn.selected {
+  border-color: var(--text-primary);
+  background-color: var(--text-primary);
+  color: var(--bg-cream);
+}
+
+.size-btn-dim {
+  display: block;
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.size-btn-note {
+  display: block;
+  font-size: 0.7rem;
+  opacity: 0.78;
+  margin-top: 2px;
+}
+
+/* Thanh CTA nổi cố định ở đáy màn hình */
+.sticky-cta-bar {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: var(--max-width);
+  background: rgba(250, 248, 245, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid var(--border-light);
+  padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cta-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.cta-total-price {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.88rem;
+}
+
+.whatsapp-cta {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  background-color: var(--whatsapp-bg);
+  color: var(--bg-cream);
+  text-decoration: none;
+  padding: 14px 18px;
+  font-size: 0.86rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.whatsapp-cta:hover,
+.whatsapp-cta:active {
+  background-color: var(--whatsapp-hover);
+}
+
+.whatsapp-cta svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* --- LIGHTBOX --- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 19, 17, 0.94);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+}
+
+.lightbox[hidden] {
+  display: none;
+}
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 82vh;
+  object-fit: contain;
+  border: 6px solid #FAF8F5;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  background: none;
+  border: none;
+  color: #FAF8F5;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 6px 10px;
+}
+
+.lightbox-caption {
+  color: #D5D0C8;
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  margin-top: 14px;
+  text-align: center;
+}
+
+/* Trạng thái không tìm thấy tác phẩm */
+.not-found {
+  padding: 80px 24px;
+  text-align: center;
+}
+
+.not-found h2 {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+}
+
+.not-found button {
+  margin-top: 16px;
+  padding: 10px 20px;
+  background: var(--text-primary);
+  color: var(--bg-cream);
+  border: none;
+  cursor: pointer;
+}
